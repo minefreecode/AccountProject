@@ -57,7 +57,7 @@ class Subject extends \yii\db\ActiveRecord
             'inn' => 'ИНН',
             'kipp' => 'КПП',
             'current_account' => 'Расчетный счет',
-            'correspondent_account' => 'Корреспондентский счет',
+            'correspondent_account' => 'Кор. счет',
             'rcbic' => 'БИК',
             'bank' => 'Банк',
         ];

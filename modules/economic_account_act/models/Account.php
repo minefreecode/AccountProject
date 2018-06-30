@@ -50,8 +50,8 @@ class Account extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Полное имя агента',
+            'id' => 'Номер',
+            'name' => 'Наименование',
             'seller_id' => 'Продавец',
             'buyer_id' => 'Покупатель',
             'measurement_unit' => 'Ед. изм',

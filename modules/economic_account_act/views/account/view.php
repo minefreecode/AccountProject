@@ -37,5 +37,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
         ],
     ]) ?>
+	
+	<?php
+		echo $model -> attributeLabels()['seller_id'].': '.$model -> seller -> full_name.'<br>';
+		echo $model -> seller -> attributeLabels()['address'].': '.$model -> seller -> address.'<br>';
+		echo $model -> seller -> attributeLabels()['inn'].': '.$model -> seller -> inn.'<br>';
+		echo $model -> seller -> attributeLabels()['current_account'].': '.$model->seller->current_account.'<br>';
+		echo $model -> seller -> attributeLabels()['correspondent_account'].': '.$model->seller->correspondent_account.'<br>';
+		echo $model -> seller -> attributeLabels()['rcbic'].': '.$model->seller->rcbic.'<br>';
+		echo $model -> seller -> attributeLabels()['bank'].': '.$model->seller->bank.'<br><br>';
+		
+				echo $model -> attributeLabels()['buyer_id'].': '.$model -> buyer -> full_name.'<br>';
+		echo $model -> buyer -> attributeLabels()['address'].': '.$model -> buyer -> address.'<br>';
+		echo $model -> buyer -> attributeLabels()['inn'].': '.$model -> buyer -> inn.'<br>';
+		echo $model -> buyer -> attributeLabels()['kipp'].': '.$model->buyer->kipp.'<br>';
+		echo $model -> buyer -> attributeLabels()['current_account'].': '.$model->buyer->current_account.'<br>';
+		echo $model -> buyer -> attributeLabels()['correspondent_account'].': '.$model->buyer->correspondent_account.'<br>';
+		echo $model -> buyer -> attributeLabels()['rcbic'].': '.$model->buyer->rcbic.'<br>';
+		echo $model -> buyer -> attributeLabels()['bank'].': '.$model->buyer->bank.'<br><br>';
+	?>
 
 </div>

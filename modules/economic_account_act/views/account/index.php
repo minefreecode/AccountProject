@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use  app\modules\economic_account_act\models\Account;
 /* @var $this yii\web\View */
 /* @var $searchModel app\\modules\economic_account_act\models\AccountSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,8 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'seller_id',
-            'buyer_id',
+			 [
+            'header' => $searchModel -> attributeLabels()['seller_id'],
+            'attribute' => 'seller.full_name'
+			],
+			[
+            'header' => $searchModel -> attributeLabels()['buyer_id'],
+            'attribute' => 'buyer.full_name'
+			],
             'measurement_unit',
             'quantity',
             'price',
