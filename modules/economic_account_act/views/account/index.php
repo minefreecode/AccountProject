@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'measurement_unit',
             'quantity',
             'price',
-
+			'date1',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

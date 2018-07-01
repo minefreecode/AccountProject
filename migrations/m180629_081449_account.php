@@ -28,7 +28,8 @@ class m180629_081449_account extends Migration
 		'buyer_id' => $this->integer()->notNull(),
 		'measurement_unit' => $this->string(12),
 		'quantity' => $this->double(),
-		'price' => $this->double()			
+		'price' => $this->double(),
+		'date' => $this->date()
         ], $tableOptions);
 		
 		
@@ -60,21 +61,14 @@ class m180629_081449_account extends Migration
      */
     public function safeDown()
     {
+	
+		
 		$this->dropTable('{{%account}}');
 		
 		
-		$this->dropForeignKey(
-            'fk-account-seller_id',
-            'post'
-        );
+
 		
-		
-		$this->dropForeignKey(
-            'fk-account-buyer_id',
-            'post'
-        );
-		
-        echo "m180629_081449_account cannot be reverted. Table 'account' deleted. Foreign keys dropped\n";
+        echo "Table 'account' deleted. Foreign keys dropped\n";
 
         return false;
     }

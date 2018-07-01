@@ -39,15 +39,20 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+       'log' => [
+			'flushInterval' => 1,
+			'traceLevel' => YII_DEBUG ? 3 : 0,
+			'targets' => [
+			[
+			'class' => 'yii\log\FileTarget',
+			'exportInterval' => 1,
+			'categories' => ['my_category'],
+			'levels' => ['info'],
+			'logFile' => '@app/itmathrepetitor.txt',
+			'logVars' => []
+		],
+    ],
+],
         'db' => $db,
         /*
         'urlManager' => [

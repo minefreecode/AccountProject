@@ -14,7 +14,7 @@ use Yii;
  * @property string $measurement_unit
  * @property double $quantity
  * @property double $price
- *
+ * @property date $date1
  * @property Subject $buyer
  * @property Subject $seller
  */
@@ -34,6 +34,7 @@ class Account extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+
             [['name', 'seller_id', 'buyer_id'], 'required'],
             [['seller_id', 'buyer_id'], 'integer'],
             [['quantity', 'price'], 'number'],
@@ -41,6 +42,8 @@ class Account extends \yii\db\ActiveRecord
             [['measurement_unit'], 'string', 'max' => 12],
             [['buyer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['buyer_id' => 'id']],
             [['seller_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['seller_id' => 'id']],
+			[['date1'], 'date', 'format' => 'd-m-yy']
+			
         ];
     }
 
@@ -57,6 +60,7 @@ class Account extends \yii\db\ActiveRecord
             'measurement_unit' => 'Ед. изм',
             'quantity' => 'Кол-во',
             'price' => 'Цена',
+			'date1' => 'Дата'
         ];
     }
 

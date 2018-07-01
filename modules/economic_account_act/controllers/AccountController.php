@@ -8,6 +8,7 @@ use app\modules\economic_account_act\models\AccountSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use \Datetime;
 
 /**
  * AccountController implements the CRUD actions for Account model.
@@ -67,8 +68,11 @@ class AccountController extends Controller
         $model = new Account();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		Yii::info('test message',$model->name); 
+		
             return $this->redirect(['view', 'id' => $model->id]);
         }
+		
 
         return $this->render('create', [
             'model' => $model,
@@ -87,6 +91,7 @@ class AccountController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

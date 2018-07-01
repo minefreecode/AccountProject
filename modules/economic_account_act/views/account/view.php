@@ -25,18 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name',
-            'seller_id',
-            'buyer_id',
-            'measurement_unit',
-            'quantity',
-            'price',
-        ],
-    ]) ?>
+
 	
 	<?php
 		echo $model -> attributeLabels()['seller_id'].': '.$model -> seller -> full_name.'<br>';
@@ -55,6 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		echo $model -> buyer -> attributeLabels()['correspondent_account'].': '.$model->buyer->correspondent_account.'<br>';
 		echo $model -> buyer -> attributeLabels()['rcbic'].': '.$model->buyer->rcbic.'<br>';
 		echo $model -> buyer -> attributeLabels()['bank'].': '.$model->buyer->bank.'<br><br>';
+		
+		echo '<center><b>Счет № '.$model -> id.' от '.$model->date1.'<b></center><br>';
 	?>
 
 </div>
