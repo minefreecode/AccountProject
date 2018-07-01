@@ -3,7 +3,7 @@
 namespace app\modules\economic_account_act\models;
 
 use Yii;
-
+use app\modules\economic_account_act\models\Order;
 /**
  * This is the model class for table "account".
  *
@@ -74,4 +74,7 @@ class Account extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Subject::className(), ['id' => 'seller_id']);
     }
+	
+
+	
 }

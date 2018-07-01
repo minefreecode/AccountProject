@@ -30,8 +30,10 @@ echo Html::a('Счет №'.$account, ['account/update', 'id' => $account ], ['c
             ['class' => 'yii\grid\SerialColumn'],
             'quantity',
             'account_id',
-            'service_id',
-
+			 [
+            'header' => $searchModel -> attributeLabels()['service_id'],
+            'attribute' => 'service.name'
+			],
             ['class' => 'yii\grid\ActionColumn', 'template'=>'{delete}' ],
         ],
     ]); ?>

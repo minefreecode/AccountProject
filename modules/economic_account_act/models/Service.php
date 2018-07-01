@@ -45,7 +45,7 @@ class Service extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'Номер',
             'name' => 'Наименование',
             'measurement_unit' => 'Единица измерения',
             'price' => 'Цена',

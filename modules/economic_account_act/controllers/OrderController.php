@@ -36,6 +36,7 @@ class OrderController extends Controller
     public function actionIndex($account_id)
     {
         $searchModel = new OrderSearch();
+		$searchModel -> account_id = $account_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

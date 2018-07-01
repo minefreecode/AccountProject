@@ -2,6 +2,46 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\modules\economic_account_act\models\Order;
+
+function html_table($account)
+{
+    $orders = Order::find()
+			->where(['account_id' => $account -> id]);
+			
+	echo $orders->count();
+ if ($orders->count() > 0): 	
+	echo $table = <<<'HEADER'
+    <table>
+		<thead>
+        <tr>
+        <th>№</th>
+        <th>Наименование</th>
+        <th>Ед. изм</th>
+        <th>Кол-во</th>
+        <th>Цена</th>
+        <th>Сумма</th>
+    </tr>
+		<thead>
+HEADER;
+
+ $count = 0;
+ foreach ($orders as  $ordr):  
+	print_r($ordr 
+    echo '<tr>'.
+	'<td>'.++$count.'</td>'.
+	'<td>'.$ordr -> getService() -> name.'</td>'.
+	'<td>'.$ordr -> service -> quantity.'</td>'.
+	'<td>'.$ordr -> service -> price .'</td>'.
+	'<td>'.$ordr -> service -> price * $ordr -> service -> quantity.'</td>'.
+	'</tr>';
+ endforeach;
+
+  echo '</tbody>'.
+'</table>';
+endif; 
+	
+}
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\economic_account_act\models\Account */
@@ -46,6 +86,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		echo $model -> buyer -> attributeLabels()['bank'].': '.$model->buyer->bank.'<br><br>';
 		
 		echo '<center><b>Счет № '.$model -> id.' от '.$model->date1.'<b></center><br>';
+		
+		html_table($model);
+
 	?>
 
 </div>

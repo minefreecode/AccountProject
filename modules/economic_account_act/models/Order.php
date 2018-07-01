@@ -67,4 +67,5 @@ class Order extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Service::className(), ['id' => 'service_id']);
     }
+
 }
