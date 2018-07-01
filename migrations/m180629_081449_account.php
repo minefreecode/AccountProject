@@ -27,8 +27,6 @@ class m180629_081449_account extends Migration
 		'seller_id' => $this->integer()->notNull(),
 		'buyer_id' => $this->integer()->notNull(),
 		'measurement_unit' => $this->string(12),
-		'quantity' => $this->double(),
-		'price' => $this->double(),
 		'date' => $this->date()
         ], $tableOptions);
 		
@@ -53,7 +51,7 @@ class m180629_081449_account extends Migration
 		'CASCADE'
 		);
 		
-		echo "Table 'account' created. Foreign keys created\n";
+	
     }
 
     /**
@@ -61,14 +59,16 @@ class m180629_081449_account extends Migration
      */
     public function safeDown()
     {
-	
+		$this->dropForeignKey(
+            'fk-account-seller_id',
+            'post'
+        );
 		
+		$this->dropForeignKey(
+            'fk-account-buyer_id',
+            'post'
+        );
 		$this->dropTable('{{%account}}');
-		
-		
-
-		
-        echo "Table 'account' deleted. Foreign keys dropped\n";
 
         return false;
     }
