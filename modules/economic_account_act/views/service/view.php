@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'measurement_unit',
-            'quantity',
             'price',
         ],
     ]) ?>

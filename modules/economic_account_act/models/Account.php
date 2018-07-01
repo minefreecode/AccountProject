@@ -35,14 +35,12 @@ class Account extends \yii\db\ActiveRecord
     {
         return [
 
-            [['name', 'seller_id', 'buyer_id'], 'required'],
+            [['seller_id', 'buyer_id'], 'required'],
             [['seller_id', 'buyer_id'], 'integer'],
-            [['quantity', 'price'], 'number'],
-            [['name'], 'string', 'max' => 50],
-            [['measurement_unit'], 'string', 'max' => 12],
             [['buyer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['buyer_id' => 'id']],
             [['seller_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['seller_id' => 'id']],
-			[['date1'], 'date', 'format' => 'd-m-yy']
+			[['date1'], 'date', 'format' => 'd-m-yy'],
+			[['services'], 'string', 'max' => 50],
 			
         ];
     }
@@ -53,14 +51,11 @@ class Account extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Номер',
-            'name' => 'Наименование',
+            'id' => 'Номер счета',
             'seller_id' => 'Продавец',
             'buyer_id' => 'Покупатель',
-            'measurement_unit' => 'Ед. изм',
-            'quantity' => 'Кол-во',
-            'price' => 'Цена',
-			'date1' => 'Дата'
+			'date1' => 'Дата',
+			'services' => 'Услуги'
         ];
     }
 

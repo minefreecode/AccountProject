@@ -36,7 +36,7 @@ class Subject extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['full_name', 'address', 'current_account', 'correspondent_account'], 'required'],
+            [['rcbic', 'full_name', 'address', 'current_account', 'correspondent_account'], 'required'],
             [['rcbic'], 'integer'],
             [['full_name', 'bank'], 'string', 'max' => 50],
             [['address'], 'string', 'max' => 100],

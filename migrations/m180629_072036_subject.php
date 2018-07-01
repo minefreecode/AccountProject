@@ -33,7 +33,7 @@ class m180629_072036_subject extends Migration
 		'bank' => $this->string(50)
         ], $tableOptions);
 		
-		echo "Table 'subject' created. \n";
+
     }
 
     /**
@@ -42,9 +42,7 @@ class m180629_072036_subject extends Migration
     public function safeDown()
     {
 		$this->dropTable('{{%subject}}');
-        echo "m180629_072036_subject cannot be reverted. table 'subject' dropped \n";
 
-        return false;
     }
 
 }

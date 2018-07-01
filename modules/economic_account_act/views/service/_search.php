@@ -23,7 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'measurement_unit') ?>
 
-    <?= $form->field($model, 'quantity') ?>
 
     <?php // echo $form->field($model, 'price') ?>
 

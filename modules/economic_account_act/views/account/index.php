@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
 			 [
             'header' => $searchModel -> attributeLabels()['seller_id'],
             'attribute' => 'seller.full_name'
@@ -37,9 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'header' => $searchModel -> attributeLabels()['buyer_id'],
             'attribute' => 'buyer.full_name'
 			],
-            'measurement_unit',
-            'quantity',
-            'price',
 			'date1',
             ['class' => 'yii\grid\ActionColumn'],
         ],

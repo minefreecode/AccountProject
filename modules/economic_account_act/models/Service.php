@@ -33,7 +33,7 @@ class Service extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['quantity', 'price'], 'number'],
+            [[ 'price'], 'number'],
             [['name'], 'string', 'max' => 50],
             [['measurement_unit'], 'string', 'max' => 12],
         ];
@@ -48,7 +48,6 @@ class Service extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Наименование',
             'measurement_unit' => 'Единица измерения',
-            'quantity' => 'Количество',
             'price' => 'Цена',
         ];
     }

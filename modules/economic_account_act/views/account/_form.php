@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\modules\economic_account_act\models\Subject;
 use kartik\datetime\DateTimePicker;
+use app\modules\economic_account_act\models\Service;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\economic_account_act\models\Account */
@@ -13,9 +14,10 @@ use kartik\datetime\DateTimePicker;
 
 <div class="account-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); 
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+	?>
+
 
 	<?= $form->field($model, 'seller_id')->dropDownList(
       ArrayHelper::map(Subject::find()->all(), 'id', 'full_name')) ?>
@@ -23,11 +25,8 @@ use kartik\datetime\DateTimePicker;
 	<?= $form->field($model, 'buyer_id')->dropDownList(
       ArrayHelper::map(Subject::find()->all(), 'id', 'full_name')) ?>
 	  
-    <?= $form->field($model, 'measurement_unit')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'quantity')->textInput() ?>
-
-    <?= $form->field($model, 'price')->textInput() ?>
+	<!--?=$form->field($model, 'services')->listBox( $services,['multiple' => 'true',
+    ]) ?-->
 
 <!--?= $form->field($model, 'date1')->textInput() ?-->
 	<?= DateTimePicker::widget([
@@ -47,7 +46,7 @@ use kartik\datetime\DateTimePicker;
 	?>
 		
     <div class="form-group">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Далее', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

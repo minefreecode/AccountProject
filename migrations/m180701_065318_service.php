@@ -25,7 +25,6 @@ $tableOptions = null; //Хотя опции не указываем, но пер
         'id' => $this->primaryKey(),
         'name' => $this->string(50)->notNull(),		
 		'measurement_unit' => $this->string(12),
-		'quantity' => $this->double(),
 		'price' => $this->double()
         ], $tableOptions);
 		
@@ -43,7 +42,7 @@ $tableOptions = null; //Хотя опции не указываем, но пер
 		
       	$this->dropTable('{{%service}}');
 		
-        return false;
+   
     }
 
 

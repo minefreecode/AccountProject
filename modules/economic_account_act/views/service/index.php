@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'measurement_unit',
-            'quantity',
-            //'price',
+            'price',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\economic_account_act\models\Account */
 
-$this->title = $model->name;
+$this->title = 'Счет № '.$model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Счета', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

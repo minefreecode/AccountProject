@@ -3,17 +3,16 @@
 use yii\db\Migration;
 
 /**
- * Class m180629_081449_account
-   Таблица 'Счета'
+ * Class m180701_093659_order
  */
-class m180629_081449_account extends Migration
+class m180701_093659_order extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-		$tableOptions = null; //Хотя опции не указываем, но переменную заводим на будущее
+$tableOptions = null; //Хотя опции не указываем, но переменную заводим на будущее
 		
         //Опции для mysql, чтобы параметры таблицы в БД не были такими какие не нужны
         if ($this->db->driverName === 'mysql') {
@@ -21,36 +20,33 @@ class m180629_081449_account extends Migration
         }
 
         //Создание таблицы, хранящая все счета
-        $this->createTable('{{%account}}', [
+        $this->createTable('{{%order}}', [
         'id' => $this->primaryKey(),
-        'services' => $this->string(50)->notNull(),
-		'seller_id' => $this->integer()->notNull(),
-		'buyer_id' => $this->integer()->notNull(),
-		'date1' => $this->date()
+        'quantity' => $this->double(),
+		'account_id' => $this->integer()->notNull(),
+		'service_id' => $this->integer()->notNull(),
         ], $tableOptions);
 		
 		
 		//Внешний ключ продавцов
 		$this->addForeignKey(
-		'fk-account-seller_id',
+		'fk-order-account_id',
+		'order',
+		'account_id',
 		'account',
-		'seller_id',
-		'subject',
 		'id',
 		'CASCADE'
 		);
 		
 		//Внешний ключ покупателей
 		$this->addForeignKey(
-		'fk-account-buyer_id',
-		'account',
-		'buyer_id',
-		'subject',
+		'fk-order-service_id',
+		'order',
+		'service_id',
+		'service',
 		'id',
 		'CASCADE'
 		);
-		
-	
     }
 
     /**
@@ -58,18 +54,31 @@ class m180629_081449_account extends Migration
      */
     public function safeDown()
     {
-		$this->dropForeignKey(
-            'fk-account-seller_id',
+        $this->dropForeignKey(
+            'fk-order-account_id',
             'post'
         );
 		
 		$this->dropForeignKey(
-            'fk-account-buyer_id',
+            'fk-order-service_id',
             'post'
         );
-		$this->dropTable('{{%account}}');
+		$this->dropTable('{{%order}}');
+		
+    }
 
+    /*
+    // Use up()/down() to run migration code without a transaction.
+    public function up()
+    {
 
     }
 
+    public function down()
+    {
+        echo "m180701_093659_order cannot be reverted.\n";
+
+        return false;
+    }
+    */
 }

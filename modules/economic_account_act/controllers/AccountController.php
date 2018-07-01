@@ -68,9 +68,9 @@ class AccountController extends Controller
         $model = new Account();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-		Yii::info('test message',$model->name); 
-		
-            return $this->redirect(['view', 'id' => $model->id]);
+			//После сохранения прямиком к оформлению заказов
+			return  Yii::$app->response->redirect(array('accounts/order/index','account_id'=>$model->id));
+			
         }
 		
 
@@ -91,8 +91,9 @@ class AccountController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			//После сохранения прямиком к оформлению заказов
+			return  Yii::$app->response->redirect(array('accounts/order/index','account_id'=>$model->id));
 			
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

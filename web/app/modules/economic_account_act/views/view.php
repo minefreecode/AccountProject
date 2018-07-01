@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\economic_account_act\models\Service */
+/* @var $model app\modules\economic_account_act\models\Order */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Services', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="service-view">
+<div class="order-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,11 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'account_id',
-            'name',
-            'measurement_unit',
             'quantity',
-            'price',
+            'account_id',
+            'service_id',
         ],
     ]) ?>
 

@@ -17,7 +17,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'measurement_unit')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'quantity')->textInput() ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

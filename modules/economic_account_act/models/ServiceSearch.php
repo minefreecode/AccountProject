@@ -20,7 +20,7 @@ class ServiceSearch extends Service
         return [
             [['id'], 'integer'],
             [['name', 'measurement_unit'], 'safe'],
-            [['quantity', 'price'], 'number'],
+            [[ 'price'], 'number'],
         ];
     }
 
@@ -61,7 +61,6 @@ class ServiceSearch extends Service
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'quantity' => $this->quantity,
             'price' => $this->price,
         ]);
 

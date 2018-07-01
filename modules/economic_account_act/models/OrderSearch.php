@@ -5,12 +5,12 @@ namespace app\modules\economic_account_act\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\economic_account_act\models\Account;
+use app\modules\economic_account_act\models\Order;
 
 /**
- * AccountSearch represents the model behind the search form of `app\modules\economic_account_act\models\Account`.
+ * OrderSearch represents the model behind the search form of `app\modules\economic_account_act\models\Order`.
  */
-class AccountSearch extends Account
+class OrderSearch extends Order
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,8 @@ class AccountSearch extends Account
     public function rules()
     {
         return [
-            [['id', 'seller_id', 'buyer_id'], 'integer']
+            [['id', 'account_id', 'service_id'], 'integer'],
+            [['quantity'], 'number'],
         ];
     }
 
@@ -40,7 +41,7 @@ class AccountSearch extends Account
      */
     public function search($params)
     {
-        $query = Account::find();
+        $query = Order::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +60,10 @@ class AccountSearch extends Account
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'seller_id' => $this->seller_id,
-            'buyer_id' => $this->buyer_id,
+            'quantity' => $this->quantity,
+            'account_id' => $this->account_id,
+            'service_id' => $this->service_id,
         ]);
-
 
         return $dataProvider;
     }

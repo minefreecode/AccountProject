@@ -17,6 +17,10 @@ $this->title = 'Счета';
 		        <p>
 		<?php echo Html::a('Счета', ['accounts/account'], ['class' => 'btn btn-lg btn-success']);  ?>
 		</p>
+		
+				        <p>
+		<?php echo Html::a('Услуги', ['accounts/service'], ['class' => 'btn btn-lg btn-success']);  ?>
+		</p>
     </div>
 
     </div>
