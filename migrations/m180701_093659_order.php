@@ -56,12 +56,12 @@ $tableOptions = null; //Хотя опции не указываем, но пер
     {
         $this->dropForeignKey(
             'fk-order-account_id',
-            'post'
+            'order'
         );
 		
 		$this->dropForeignKey(
             'fk-order-service_id',
-            'post'
+            'order'
         );
 		$this->dropTable('{{%order}}');
 		

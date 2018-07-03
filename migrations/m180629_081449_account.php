@@ -60,12 +60,12 @@ class m180629_081449_account extends Migration
     {
 		$this->dropForeignKey(
             'fk-account-seller_id',
-            'post'
+            'account'
         );
 		
 		$this->dropForeignKey(
             'fk-account-buyer_id',
-            'post'
+            'account'
         );
 		$this->dropTable('{{%account}}');
 
