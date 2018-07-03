@@ -31,11 +31,11 @@ use app\modules\economic_account_act\models\Service;
 <!--?= $form->field($model, 'date1')->textInput() ?-->
 	<?= DateTimePicker::widget([
       'name' => 'Account[date1]',
-      'value' => date('d-m-y'),
+      'value' => date('y-m-d'),
 	
       'options' => ['placeholder' => 'Выберите дату ...'],
       'pluginOptions' => [
-          'format' => 'dd-mm-yy',
+          'format' => 'yy-mm-dd',
           'todayHighlight' => true,
 			 'autoclose' => true,
 			 'changeMonth' => true,
