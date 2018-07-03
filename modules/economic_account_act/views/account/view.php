@@ -3,16 +3,15 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\modules\economic_account_act\models\Order;
+use app\modules\economic_account_act\models\Service;
 
-function html_table($account)
-{
-    $orders = Order::find()
-			->where(['account_id' => $account -> id]);
-			
-	echo $orders->count();
- if ($orders->count() > 0): 	
+//Появляется таблица
+function html_table($account, $orders)
+{		
+	echo count($orders);
+ if (count($orders) > 0): 	
 	echo $table = <<<'HEADER'
-    <table>
+    <table border='1'>
 		<thead>
         <tr>
         <th>№</th>
@@ -26,21 +25,39 @@ function html_table($account)
 HEADER;
 
  $count = 0;
+ 
+ //Калькуляция количества в просмотре 
+ $quant = 0;
+ 
+  //Калькуляция суммы в просмотре 
+ $summ_all = 0;
+ 
  foreach ($orders as  $ordr):  
-	print_r($ordr 
+	$sum = $ordr -> service -> price * $ordr ->  quantity;//Сумма заказа вычисляется для просмотра
     echo '<tr>'.
 	'<td>'.++$count.'</td>'.
-	'<td>'.$ordr -> getService() -> name.'</td>'.
-	'<td>'.$ordr -> service -> quantity.'</td>'.
+	'<td>'.$ordr -> service -> name.'</td>'.
+	'<td>'.$ordr -> service -> measurement_unit.'</td>'.
+	'<td>'.$ordr -> quantity.'</td>'.
 	'<td>'.$ordr -> service -> price .'</td>'.
-	'<td>'.$ordr -> service -> price * $ordr -> service -> quantity.'</td>'.
+	'<td>'.$sum.'</td>'.
 	'</tr>';
+	$quant = $quant + $ordr -> quantity;
+	$summ_all =  $summ_all + $sum;
  endforeach;
 
-  echo '</tbody>'.
-'</table>';
-endif; 
+ //Появляются итоги
+     echo '<tr>'.
+	'<td colspan="3" >Итоги</td>'.
+	'<td>'.$quant  .'</td>'.
+	'<td></td>'.
+	'<td>'.$summ_all.'</td>'.
+	'</tr>';
 	
+  echo '</tbody>'.
+	'</table>';
+  endif; 
+  echo 'Сумма прописью'.RussianNumbers::float2words($summ_all);
 }
 
 /* @var $this yii\web\View */
@@ -68,6 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	
 	<?php
+		//Появляется продавец
 		echo $model -> attributeLabels()['seller_id'].': '.$model -> seller -> full_name.'<br>';
 		echo $model -> seller -> attributeLabels()['address'].': '.$model -> seller -> address.'<br>';
 		echo $model -> seller -> attributeLabels()['inn'].': '.$model -> seller -> inn.'<br>';
@@ -76,7 +94,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		echo $model -> seller -> attributeLabels()['rcbic'].': '.$model->seller->rcbic.'<br>';
 		echo $model -> seller -> attributeLabels()['bank'].': '.$model->seller->bank.'<br><br>';
 		
-				echo $model -> attributeLabels()['buyer_id'].': '.$model -> buyer -> full_name.'<br>';
+		//Появляется покупатель
+		echo $model -> attributeLabels()['buyer_id'].': '.$model -> buyer -> full_name.'<br>';
 		echo $model -> buyer -> attributeLabels()['address'].': '.$model -> buyer -> address.'<br>';
 		echo $model -> buyer -> attributeLabels()['inn'].': '.$model -> buyer -> inn.'<br>';
 		echo $model -> buyer -> attributeLabels()['kipp'].': '.$model->buyer->kipp.'<br>';
@@ -87,7 +106,8 @@ $this->params['breadcrumbs'][] = $this->title;
 		
 		echo '<center><b>Счет № '.$model -> id.' от '.$model->date1.'<b></center><br>';
 		
-		html_table($model);
+		//Появляется таблица
+		html_table($model, $orders);
 
 	?>
 

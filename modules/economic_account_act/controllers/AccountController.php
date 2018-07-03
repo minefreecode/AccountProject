@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \Datetime;
+use app\modules\economic_account_act\models\Order;
 
 /**
  * AccountController implements the CRUD actions for Account model.
@@ -53,8 +54,12 @@ class AccountController extends Controller
      */
     public function actionView($id)
     {
+	    $orders = Order::find()
+			->where(['account_id' => $id])->all();			
+
+			
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id), 'orders' => $orders
         ]);
     }
 
