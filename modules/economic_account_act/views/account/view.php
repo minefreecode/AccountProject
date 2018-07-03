@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\modules\economic_account_act\models\Order;
 use app\modules\economic_account_act\models\Service;
+use app\components\helpers\cSumInWords;
 
 //Появляется таблица
 function html_table($account, $orders)
@@ -57,7 +58,11 @@ HEADER;
   echo '</tbody>'.
 	'</table>';
   endif; 
-  echo 'Сумма прописью'.RussianNumbers::float2words($summ_all);
+  
+  //Сумма прописью
+  $money = cSumInWords::sRubles($summ_all);
+  echo '<br>Сумма прописью: '. $money.' Без НДС.' ;
+
 }
 
 /* @var $this yii\web\View */
@@ -109,6 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		//Появляется таблица
 		html_table($model, $orders);
 
+		echo '<br><br><br>Индивидуальный предприниматель&nbsp&nbsp&nbsp&nbsp&nbsp_____________&nbsp&nbsp&nbsp&nbsp&nbsp(____________).' ;
 	?>
 
 </div>
