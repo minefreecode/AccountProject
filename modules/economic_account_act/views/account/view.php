@@ -9,7 +9,6 @@ use app\components\helpers\cSumInWords;
 //Появляется таблица
 function html_table($account, $orders)
 {		
-	echo count($orders);
  if (count($orders) > 0): 	
 	echo $table = <<<'HEADER'
     <table border='1'>
@@ -57,12 +56,12 @@ HEADER;
 	
   echo '</tbody>'.
 	'</table>';
-  endif; 
+ 
   
   //Сумма прописью
   $money = cSumInWords::sRubles($summ_all);
   echo '<br>Сумма прописью: '. $money.' Без НДС.' ;
-
+ endif; 
 }
 
 /* @var $this yii\web\View */
